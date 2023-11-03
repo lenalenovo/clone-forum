@@ -1,6 +1,6 @@
 
 import HeaderPerfil from "../../componentes/Header/HeaderPerfil";
-
+import Card from "../../componentes/Card/Card";
 import { SectionStyle } from "./style";
 
 

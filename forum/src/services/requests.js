@@ -11,10 +11,10 @@ export const getPostAll=(salvarPosts)=>{
     .catch((err)=>{console.log(err)})
 }
 
-export const createPost = (title, content, image, hashtag)=>{
+export const createPost = (tittle, content, image, hashtag)=>{
     return new Promise((resolve, reject)=>{
         let body={
-            'title': title,
+            'title': tittle,
             'content': content,
             'image': image,
             'hashtag': hashtag
@@ -27,5 +27,19 @@ export const createPost = (title, content, image, hashtag)=>{
 })  .catch((err)=>{
         reject(err)
 })
+})
+}
+
+export const createComment = (postId, comment)=>{
+    const body = {
+        'postId': postId,
+        'comment': comment,
+}
+axios.post(`${BASE_URL}/comment/create`, body, {headers: {Authorization: token}})
+.then((response)=>{
+    getPostAll()
+})
+.catch((err)=>{
+    console.err("Erro ao criar o comentário:", err)
 })
 }

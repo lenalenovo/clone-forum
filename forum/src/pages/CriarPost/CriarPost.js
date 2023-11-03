@@ -15,12 +15,12 @@ const CriarPost = () => {
 
   const criarPostApi = async(e)=>{
     e.preventDefault()
-    if(!title || !content){
+    if(!tittle || !content){
       alert("Título e conteúdo são campos obrigatórios.")
     }
     const hashtagsArray = hashtag.split(",")
 
-    await createPost(title, content, image, hashtagsArray)
+    await createPost(tittle, content, image, hashtagsArray)
     .then((response)=>{
       console.log("Post criado com sucesso!", response)
 })  .catch((error)=>{
@@ -31,7 +31,36 @@ const CriarPost = () => {
   useVerificarToken()
   return (
    <>
-   criarpost
+   <HeaderPerfil titulo={"New Question"}/>
+    <ContainerCriarPost>
+      {/* <Menu/> */}
+    <FormStyle onSubmit={criarPostApi}>
+
+      <InputStyle
+      placeholder="Título" 
+      value={tittle} 
+      onChange={(e)=>setTitle(e.target.value)} required/>
+
+      <TextareaStyle
+      placeholder="Conteúdo"
+      value={content}
+      onChange={(e)=> setContent(e.target.value)} required/>
+
+      <InputStyle
+      type="text"
+      placeholder="Hashtag"
+      value={hashtag}
+      onChange={(e)=>setHashtag(e.target.value)}/>
+
+      <InputStyle
+        type="text"
+        label="Imagem"
+        placeholder="Digite o endereço da imagem"
+        onChange={(e)=>setImage(e.target.value)}/>
+
+      <ButtonStyle type="submit">Enviar</ButtonStyle>
+      </FormStyle>
+    </ContainerCriarPost>
    </>
   );
 };

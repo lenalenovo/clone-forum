@@ -15,7 +15,7 @@ function Card() {
 },[])
  
   return (
-    <>
+  <ContainerCardHome>
 
    {
 
@@ -50,8 +50,7 @@ function Card() {
 
     }
 
-
-    </>
+</ContainerCardHome>
   )
 }
 
